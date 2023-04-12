@@ -5,6 +5,7 @@ import { handleInitialData } from './actions/shared';
 import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
 import { Footer } from './components/Footer';
+import LoadingBar from 'react-redux-loading-bar';
 
 function App(props) {
 
@@ -12,14 +13,18 @@ function App(props) {
     props.dispatch(handleInitialData());
   }, [props]);
 
-  return props.loading === true ? null : (
+  return (
     <>
-      <Nav />
-      <Dashboard />
-      <Footer />
+      <LoadingBar />
+      {props.loading === true ? null : (
+        <>
+          <Nav />
+          <Dashboard />
+          <Footer />
+        </>
+      )}
     </>
-
-  );
+  )
 }
 
 const mapStateToProps = ({ authedUser }) => ({

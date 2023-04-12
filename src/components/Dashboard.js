@@ -49,12 +49,12 @@ const mapStateToProps = ({ polls, authedUser }) => {
             : newPolls = newPolls.concat(poll)
     );
     return {
-        newPollsIds: newPolls
+        newPollsIds: newPolls ? newPolls
             .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0))
-            .map(poll => poll.id),
-        donePollsIds: donePolls
+            .map(poll => poll.id) : null,
+        donePollsIds: donePolls ? donePolls
             .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0))
-            .map(poll => poll.id),
+            .map(poll => poll.id) : null,
     }
 };
 
