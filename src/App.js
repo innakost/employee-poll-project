@@ -1,7 +1,10 @@
-import './App.css';
+// import './App.css';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from './actions/shared';
+import { Nav } from './components/Nav';
+import Dashboard from './components/Dashboard';
+import { Footer } from './components/Footer';
 
 function App(props) {
 
@@ -9,13 +12,18 @@ function App(props) {
     props.dispatch(handleInitialData());
   }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        Hello, goddess Inna
-      </header>
-    </div>
+  return props.loading === true ? null : (
+    <>
+      <Nav />
+      <Dashboard />
+      <Footer />
+    </>
+
   );
 }
 
-export default connect()(App);
+const mapStateToProps = ({ authedUser }) => ({
+  loading: authedUser === null,
+});
+
+export default connect(mapStateToProps)(App);
