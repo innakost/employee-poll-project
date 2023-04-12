@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { handleInitialData } from './actions/shared';
-import { Nav } from './components/Nav';
+import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
 import { Footer } from './components/Footer';
 
@@ -10,7 +10,7 @@ function App(props) {
 
   useEffect(() => {
     props.dispatch(handleInitialData());
-  }, []);
+  }, [props]);
 
   return props.loading === true ? null : (
     <>
