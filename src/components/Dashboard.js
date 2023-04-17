@@ -7,7 +7,7 @@ const Dashboard = ({ newPollsIds, donePollsIds }) => {
     console.log(donePollsIds);
 
     return (
-        <div className="w3-sand w3-grayscale w3-large">
+        <div className="3-large">
             <div className="w3-container w3-padding-64">
                 <h2 className="w3-center w3-padding-64">
                     <span className="w3-bottombar w3-border-dark-grey w3-padding-16">New Questions</span>
