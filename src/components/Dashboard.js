@@ -3,9 +3,6 @@ import Poll from "./Poll";
 
 const Dashboard = ({ newPollsIds, donePollsIds }) => {
 
-    console.log(newPollsIds);
-    console.log(donePollsIds);
-
     return (
         <div className="3-large">
             <div className="w3-container w3-padding-64">
