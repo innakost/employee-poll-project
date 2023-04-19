@@ -1,5 +1,9 @@
+import { showLoading, hideLoading } from "react-redux-loading-bar";
+import { saveQuestion } from "../utils/api";
+
 export const RECEIVE_POLLS = 'RECEIVE_POLLS';
 export const SAVE_QUESTION_ANSWER_TO_POLL = 'SAVE_QUESTION_ANSWER_TO_POLL';
+export const ADD_POLL = 'ADD_POLL';
 
 export function receivePolls(polls) {
     return {
@@ -17,17 +21,27 @@ export function saveAnswerToPoll({ authedUser, qid, answer }) {
     }
 }
 
-// export function handleSavePollAnswer(info) {
-//     return (dispatch) => {
-//         // add answer to our state
-//         dispatch(saveAnswerToPoll(info));
+function addPoll(poll) {
+    return {
+        type: ADD_POLL,
+        poll
+    }
+}
 
-//         // save to database
-//         return saveQuestionAnswer(info).catch((e) => {
-//             console.warn("Error in saveAnswerToPoll:", e);
-//             dispatch(saveAnswerToPoll(info));
-//             alert("There was an error in answering a question. Try again.");
-//         })
-//     }
-// }
+export function handleAddPoll({ optionOneText, optionTwoText }) {
+    return (dispatch, getState) => {
+        const { authedUser } = getState();
+
+        dispatch(showLoading());
+        console.log(optionOneText, optionTwoText, authedUser)
+        return saveQuestion({
+            optionOneText,
+            optionTwoText,
+            author: authedUser
+        })
+            .then((poll) => dispatch(addPoll(poll)))
+            .then(() => dispatch(hideLoading()));
+
+    }
+}
 
