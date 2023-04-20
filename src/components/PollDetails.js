@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { savePollAnswer } from "../actions/shared";
 import Option from "./Option";
 
-const PollPage = ({ dispatch, authedUser, poll, users }) => {
+const PollDetails = ({ dispatch, authedUser, poll, users }) => {
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -55,4 +55,4 @@ const mapStateToProps = ({ authedUser, polls, users }, props) => {
     }
 }
 
-export default connect(mapStateToProps)(PollPage);
+export default connect(mapStateToProps)(PollDetails);
