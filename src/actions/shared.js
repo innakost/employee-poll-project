@@ -1,10 +1,7 @@
 import { getInitialData, saveQuestionAnswer } from "../utils/api";
 import { receivePolls, saveAnswerToPoll } from "./polls";
 import { receiveUsers, saveAnswerToUser } from "./users";
-import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
-
-const AUTHED_ID = 'sarahedo';
 
 export function handleInitialData() {
     return (dispatch) => {
@@ -12,7 +9,6 @@ export function handleInitialData() {
         return getInitialData().then(({ users, questions }) => {
             dispatch(receivePolls(questions));
             dispatch(receiveUsers(users));
-            dispatch(setAuthedUser(AUTHED_ID));
             dispatch(hideLoading());
         })
     }

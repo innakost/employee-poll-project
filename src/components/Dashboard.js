@@ -1,39 +1,50 @@
 import { connect } from "react-redux";
 import Poll from "./Poll";
+import { handleInitialData } from './actions/shared';
+import LoadingBar from 'react-redux-loading-bar';
 
 const Dashboard = ({ newPollsIds, donePollsIds }) => {
 
+    // useEffect(() => {
+    //     props.dispatch(handleInitialData());
+    // }, [props]);
+
     return (
-        <div className="3-large">
-            <div className="w3-container w3-padding-64">
-                <h2 className="w3-center w3-padding-64">
-                    <span className="w3-bottombar w3-border-dark-grey w3-padding-16">New Questions</span>
-                </h2>
+        <>
+            <LoadingBar />
+            {props.loading === true ? null : (
+                <div className="3-large">
+                    <div className="w3-container w3-padding-64">
+                        <h2 className="w3-center w3-padding-64">
+                            <span className="w3-bottombar w3-border-dark-grey w3-padding-16">New Questions</span>
+                        </h2>
 
-                {newPollsIds &&
-                    <div className="w3-row-padding">
-                        {newPollsIds.map(id => (
-                            <Poll key={id} id={id} />
-                        ))}
+                        {newPollsIds &&
+                            <div className="w3-row-padding">
+                                {newPollsIds.map(id => (
+                                    <Poll key={id} id={id} />
+                                ))}
+                            </div>
+                        }
+
+                        <h2 className="w3-center w3-padding-64">
+                            <span className="w3-bottombar w3-border-dark-grey w3-padding-16">
+                                Done
+                            </span>
+                        </h2>
+
+                        {donePollsIds &&
+                            <div className="w3-row-padding">
+                                {donePollsIds.map(id => (
+                                    <Poll key={id} id={id} />
+                                ))}
+                            </div>
+                        }
+
                     </div>
-                }
-
-                <h2 className="w3-center w3-padding-64">
-                    <span className="w3-bottombar w3-border-dark-grey w3-padding-16">
-                        Done
-                    </span>
-                </h2>
-
-                {donePollsIds &&
-                    <div className="w3-row-padding">
-                        {donePollsIds.map(id => (
-                            <Poll key={id} id={id} />
-                        ))}
-                    </div>
-                }
-
-            </div>
-        </div>
+                </div>
+            )}
+        </>
     )
 }
 
@@ -52,6 +63,7 @@ const mapStateToProps = ({ polls, authedUser }) => {
         donePollsIds: donePolls ? donePolls
             .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0))
             .map(poll => poll.id) : null,
+        loading: authedUser === null,
     }
 };
 
