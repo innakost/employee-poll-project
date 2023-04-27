@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 const Poll = ({ poll }) => {
+    const navigate = useNavigate();
 
-    const goToPollPage = (e) => {
-        e.preventDefault();
-
-        // TODO: Redirect to Poll Container
+    const goToPollPage = () => {
+        navigate(`/questions/${poll.id}`)
     }
 
     return (
@@ -19,7 +19,7 @@ const Poll = ({ poll }) => {
                     <p>
                         <button
                             className="w3-button w3-light-grey w3-block"
-                            onClick={(e) => goToPollPage(e)}
+                            onClick={goToPollPage}
                         >Show</button>
                     </p>
                 </div>

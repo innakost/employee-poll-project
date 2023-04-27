@@ -30,7 +30,7 @@ const Leaderboard = ({ users }) => {
                             <tr key={user.id}>
                                 <td>
                                     <div className="w3-bar">
-                                        <img src={user.avatarURL} className="w3-bar-item w3-circle" style={{ width: 85 }} />
+                                        <img alt="avatar" src={user.avatarURL} className="w3-bar-item w3-circle" style={{ width: 85 }} />
                                         <div className="w3-bar-item">
                                             <span className="w3-large">{user.name}</span><br />
                                             <span>{user.id}</span>

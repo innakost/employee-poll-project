@@ -1,18 +1,13 @@
 import { connect } from "react-redux";
 import Poll from "./Poll";
-import { handleInitialData } from './actions/shared';
 import LoadingBar from 'react-redux-loading-bar';
 
-const Dashboard = ({ newPollsIds, donePollsIds }) => {
-
-    // useEffect(() => {
-    //     props.dispatch(handleInitialData());
-    // }, [props]);
+const Dashboard = ({ newPollsIds, donePollsIds, loading }) => {
 
     return (
         <>
             <LoadingBar />
-            {props.loading === true ? null : (
+            {loading === true ? null : (
                 <div className="3-large">
                     <div className="w3-container w3-padding-64">
                         <h2 className="w3-center w3-padding-64">

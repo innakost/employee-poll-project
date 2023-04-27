@@ -1,10 +1,15 @@
 import { connect } from "react-redux";
 import { setAuthedUser } from "../actions/authedUser";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const LogIn = ({ names, dispatch }) => {
+    const navigate = useNavigate();
+    const state = useLocation();
 
     const handleClick = (name) => {
         dispatch(setAuthedUser(name));
+
+        navigate(state?.state?.path || '/dashboard');
     }
 
     return (

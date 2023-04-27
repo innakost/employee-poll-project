@@ -1,6 +1,18 @@
 import { connect } from "react-redux";
 import { savePollAnswer } from "../actions/shared";
 import Option from "./Option";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
+const withRouter = (Component) => {
+    const ComponentWithRouterProp = (props) => {
+        let location = useLocation();
+        let navigate = useNavigate();
+        let params = useParams();
+        return <Component {...props} router={{ location, navigate, params }} />;
+    };
+
+    return ComponentWithRouterProp;
+};
 
 const PollDetails = ({ dispatch, authedUser, poll, users }) => {
 
@@ -44,7 +56,7 @@ const PollDetails = ({ dispatch, authedUser, poll, users }) => {
 }
 
 const mapStateToProps = ({ authedUser, polls, users }, props) => {
-    const { id } = props.match.params;
+    const { id } = props.router.params;
 
     return {
         id,
@@ -55,4 +67,4 @@ const mapStateToProps = ({ authedUser, polls, users }, props) => {
     }
 }
 
-export default connect(mapStateToProps)(PollDetails);
+export default withRouter(connect(mapStateToProps)(PollDetails));
