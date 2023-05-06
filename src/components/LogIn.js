@@ -18,6 +18,7 @@ const LogIn = ({ names, dispatch }) => {
                 <h2 className="w3-padding-64">
                     <span className="w3-bottombar w3-border-dark-grey w3-padding-16">Employee Polls</span>
                 </h2>
+                {state?.state?.message && <p className="w3-text-red">{state.state.message}</p>}
                 <p>Login</p>
                 <div className="w3-dropdown-hover">
                     <button className="w3-button w3-black">Hover To Select User</button>

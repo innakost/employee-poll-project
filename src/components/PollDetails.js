@@ -41,7 +41,7 @@ const PollDetails = ({ dispatch, authedUser, poll, users }) => {
                 </h2>
                 <div className="w3-center">
                     <img src={users[poll.author].avatarURL} alt="Avatar" className="w3-circle" style={{ width: 250 }} />
-                    <p>Please shoose your answer for the folloving ↓</p>
+                    <p>Please shoose your answer for the following ↓</p>
                 </div>
                 <div className="w3-row-padding">
                     <div className="w3-center w3-padding-64">

@@ -9,12 +9,13 @@ import LogIn from './components/LogIn';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
+import PageNotFound from './components/PageNotFound';
 
-function App(props) {
+function App({ dispatch }) {
 
   useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, [props]);
+    dispatch(handleInitialData());
+  }, [dispatch]);
 
   return (
     <Fragment>
@@ -48,13 +49,21 @@ function App(props) {
             </Layout>
           </RequireAuth>
         } />
+        <Route path="/*" element={
+          <Layout>
+            <PageNotFound />
+          </Layout>
+        } />
       </Routes>
     </Fragment>
   )
 }
 
-// const mapStateToProps = ({authedUser}) => ({
-//   loading: authedUser === null,
-// });
+const mapStateToProps = ({ authedUser, polls, users }) => ({
+  // loading: authedUser === null,
+  authedUser,
+  polls,
+  users
+});
 
-export default connect()(App);
+export default connect(mapStateToProps)(App);

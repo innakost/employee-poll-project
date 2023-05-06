@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { handleAddPoll } from "../actions/polls";
+import { useNavigate } from "react-router-dom";
+
 
 const NewPoll = ({ dispatch }) => {
+    const navigate = useNavigate();
 
     const [poll, setPoll] = useState({
         optionOneText: '',
@@ -26,6 +29,8 @@ const NewPoll = ({ dispatch }) => {
             optionOneText: '',
             optionTwoText: ''
         })
+
+        navigate("/dashboard");
     }
 
     return (

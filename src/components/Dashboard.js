@@ -24,7 +24,7 @@ const Dashboard = ({ newPollsIds, donePollsIds, loading }) => {
 
                         <h2 className="w3-center w3-padding-64">
                             <span className="w3-bottombar w3-border-dark-grey w3-padding-16">
-                                Done
+                                Answered Questions
                             </span>
                         </h2>
 
@@ -53,10 +53,10 @@ const mapStateToProps = ({ polls, authedUser }) => {
     );
     return {
         newPollsIds: newPolls ? newPolls
-            .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0))
+            .sort((a, b) => b.timestamp - a.timestamp)
             .map(poll => poll.id) : null,
         donePollsIds: donePolls ? donePolls
-            .sort((a, b) => (a.timestamp > b.timestamp) ? 1 : ((b.timestamp > a.timestamp) ? -1 : 0))
+            .sort((a, b) => b.timestamp - a.timestamp)
             .map(poll => poll.id) : null,
         loading: authedUser === null,
     }
