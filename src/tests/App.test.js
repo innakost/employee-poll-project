@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from '../App';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { store } from '../app/store';
 import { MemoryRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
+test('renders Login page', () => {
   render(
     <MemoryRouter>
       <Provider store={store}>
@@ -12,6 +12,6 @@ test('renders learn react link', () => {
       </Provider>
     </MemoryRouter>
   );
-  // const linkElement = screen.getByText(/learn react/i);
-  // expect(linkElement).toBeInTheDocument();
+  const linkElement = screen.getByText(/Login/i);
+  expect(linkElement).toBeInTheDocument();
 });

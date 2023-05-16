@@ -6,7 +6,7 @@ const Dashboard = ({ newPollsIds, donePollsIds, loading }) => {
 
     return (
         <>
-            <LoadingBar />
+            {/* <LoadingBar /> */}
             {loading === true ? null : (
                 <div className="3-large">
                     <div className="w3-container w3-padding-64">

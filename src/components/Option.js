@@ -14,10 +14,10 @@ const Option = ({ option, authedUser, users, handleClick, hasVoted, name }) => {
         <div className="w3-col s6 w3-margin-bottom">
             <ul className="w3-ul w3-border w3-center w3-hover-shadow">
                 <li className="w3-dark-grey w3-xlarge w3-padding-32">{option.text}</li>
-                <li className="w3-padding-16">{`Voted: ${option.votes.length}`}</li>
-                <li className="w3-padding-16">Voted (%):
+                <li className="w3-padding-16" data-testid={`${name}-num`}>{`Voted: ${option.votes.length}`}</li>
+                <li className="w3-padding-16"> Voted(%):
                     <div className="w3-light-grey">
-                        <div className="w3-container w3-green w3-center" style={{ width: `${votedPercentage(option)}%` }}>{votedPercentage(option)}%</div>
+                        <div className="w3-green" style={{ width: `${votedPercentage()}%` }} data-testid={`${name}-%`}>{votedPercentage()}%</div>
                     </div>
                 </li>
                 <li className="w3-padding-16">{`Your answer: ${userAnswered(option) ? '✔' : ''} `}</li>
@@ -32,7 +32,7 @@ const Option = ({ option, authedUser, users, handleClick, hasVoted, name }) => {
                     </button>
                 </li>
             </ul>
-        </div>
+        </div >
     )
 }
 

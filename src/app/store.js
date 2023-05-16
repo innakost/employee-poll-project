@@ -25,12 +25,6 @@ function loadFromLocalStorage() {
     }
 }
 
-// export const store = configureStore({
-//   reducer: {
-//     counter: counterReducer,
-//   },
-// });
-
 // preload state from local storage
 // because state resets each time I type url in address bar
 export const store = createStore(reducer, loadFromLocalStorage(), middleware);

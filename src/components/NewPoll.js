@@ -46,6 +46,7 @@ const NewPoll = ({ dispatch }) => {
                     <div className="w3-section">
                         <label>First Option</label>
                         <input
+                            data-testid="option-one"
                             style={{ width: '100%' }}
                             className="w3-input w3-border w3-hover-border-black"
                             type="text"
@@ -59,6 +60,7 @@ const NewPoll = ({ dispatch }) => {
                     <div className="w3-section">
                         <label>Second Option</label>
                         <input
+                            data-testid="option-two"
                             style={{ width: '100%' }}
                             className="w3-input w3-border w3-hover-border-black"
                             type="text"
