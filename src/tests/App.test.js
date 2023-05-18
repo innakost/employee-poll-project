@@ -5,13 +5,13 @@ import { store } from '../app/store';
 import { MemoryRouter } from 'react-router-dom';
 
 test('renders Login page', () => {
-  render(
-    <MemoryRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </MemoryRouter>
-  );
-  const linkElement = screen.getByText(/Login/i);
-  expect(linkElement).toBeInTheDocument();
+	render(
+		<MemoryRouter>
+			<Provider store={store}>
+				<App />
+			</Provider>
+		</MemoryRouter>
+	);
+	const linkElement = screen.getByText(/Login/i);
+	expect(linkElement).toBeInTheDocument();
 });

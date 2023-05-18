@@ -1,15 +1,21 @@
-import { connect } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { connect } from 'react-redux';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const RequireAuth = ({ children, authedUser }) => {
-    const location = useLocation();
+	const location = useLocation();
 
-    return authedUser ?
-        children :
-        <>
-            <Navigate to="/" replace state={{ path: location.pathname, message: "Please login first" }} />
-        </>
-}
+	return authedUser ? (
+		children
+	) : (
+		<>
+			<Navigate
+				to='/'
+				replace
+				state={{ path: location.pathname, message: 'Please login first' }}
+			/>
+		</>
+	);
+};
 
 const mapStateToProps = ({ authedUser }) => ({ authedUser });
 
