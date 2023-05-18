@@ -54,6 +54,11 @@ function App({ dispatch }) {
             <PageNotFound />
           </Layout>
         } />
+        <Route path="/404" element={
+          <Layout>
+            <PageNotFound />
+          </Layout>
+        } />
       </Routes>
     </Fragment>
   )

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { savePollAnswer } from "../actions/shared";
 import Option from "./Option";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 
 const withRouter = (Component) => {
     const ComponentWithRouterProp = (props) => {
@@ -15,6 +15,10 @@ const withRouter = (Component) => {
 };
 
 const PollDetails = ({ dispatch, authedUser, poll, users }) => {
+
+    if (poll === null) {
+        return <Navigate to="/404" />
+    }
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -61,7 +65,7 @@ const mapStateToProps = ({ authedUser, polls, users }, props) => {
     return {
         id,
         // poll: formatPoll(polls[id], users[poll.author]),
-        poll: polls[id],
+        poll: polls[id] ? polls[id] : null,
         authedUser,
         users
     }
