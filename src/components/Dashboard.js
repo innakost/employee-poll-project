@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 import Poll from './Poll';
-import LoadingBar from 'react-redux-loading-bar';
 
 const Dashboard = ({ newPollsIds, donePollsIds, loading }) => {
 	return (
 		<>
-			{/* <LoadingBar /> */}
 			{loading === true ? null : (
 				<div className='3-large'>
 					<div className='w3-container w3-padding-64'>

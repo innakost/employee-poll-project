@@ -91,7 +91,6 @@ const mapStateToProps = ({ authedUser, polls, users }, props) => {
 
 	return {
 		id,
-		// poll: formatPoll(polls[id], users[poll.author]),
 		poll: polls[id] ? polls[id] : null,
 		authedUser,
 		users
