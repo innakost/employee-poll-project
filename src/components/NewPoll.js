@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { handleAddPoll } from '../actions/polls';
+import { savePoll } from '../actions/shared';
 import { useNavigate } from 'react-router-dom';
 
 const NewPoll = ({ dispatch }) => {
@@ -21,7 +21,7 @@ const NewPoll = ({ dispatch }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		dispatch(handleAddPoll(poll));
+		dispatch(savePoll(poll));
 
 		setPoll({
 			optionOneText: '',

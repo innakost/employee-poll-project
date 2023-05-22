@@ -1,6 +1,6 @@
-import { saveQuestion } from '../utils/api';
+import { _saveQuestion } from '../utils/_DATA';
 
-describe('saveQuestion', () => {
+describe('_saveQuestion', () => {
 	// Unit Test No.1
 	it('will return saved question and all expected fields are populated when correctly formatted data is passed', async () => {
 		const mockQuestion = {
@@ -16,7 +16,7 @@ describe('saveQuestion', () => {
 				text: 'Option 2'
 			}
 		};
-		const result = await saveQuestion({
+		const result = await _saveQuestion({
 			optionOneText: 'Option 1',
 			optionTwoText: 'Option 2',
 			author: 'sarahedo'
@@ -31,7 +31,7 @@ describe('saveQuestion', () => {
 	// Unit Test No.2
 	it('will return an error if incorrect data is passed to the function', async () => {
 		const incorrectQuestion = { optionOneText: 'Option 1' };
-		await expect(saveQuestion(incorrectQuestion)).rejects.toEqual(
+		await expect(_saveQuestion(incorrectQuestion)).rejects.toEqual(
 			'Please provide optionOneText, optionTwoText, and author'
 		);
 	});

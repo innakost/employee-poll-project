@@ -5,6 +5,7 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <div />
       <div
         class="w3-large"
       >
@@ -41,6 +42,7 @@ Object {
     </div>
   </body>,
   "container": <div>
+    <div />
     <div
       class="w3-large"
     >

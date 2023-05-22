@@ -1,6 +1,6 @@
-import { saveQuestionAnswer } from '../utils/api';
+import { _saveQuestionAnswer } from '../utils/_DATA';
 
-describe('saveQuestionAnswer', () => {
+describe('_saveQuestionAnswer', () => {
 	// Unit Test No.3
 	it('returns true when when correctly formatted data is passed to the function', async () => {
 		const mockQuestionAnswer = {
@@ -8,7 +8,7 @@ describe('saveQuestionAnswer', () => {
 			qid: 'vthrdm985a262al8qx3do',
 			answer: 'optionOne'
 		};
-		const result = await saveQuestionAnswer(mockQuestionAnswer);
+		const result = await _saveQuestionAnswer(mockQuestionAnswer);
 		expect(result).toEqual(true);
 	});
 
@@ -18,7 +18,7 @@ describe('saveQuestionAnswer', () => {
 			authedUser: 'sarahedo',
 			qid: 'vthrdm985a262al8qx3do'
 		};
-		await expect(saveQuestionAnswer(incorrectQuestionAnswer)).rejects.toEqual(
+		await expect(_saveQuestionAnswer(incorrectQuestionAnswer)).rejects.toEqual(
 			'Please provide authedUser, qid, and answer'
 		);
 	});

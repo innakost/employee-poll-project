@@ -61,7 +61,7 @@ function App({ dispatch }) {
 					}
 				/>
 				<Route
-					path='/*'
+					path='*'
 					element={
 						<Layout>
 							<PageNotFound />
